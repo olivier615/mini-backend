@@ -3,12 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node sever.js",
+    "start": "node ./bin/www",
     "start:dev": "cross-env NODE_ENV=dev nodemon ./bin/www",
     "start:production": "cross-env NODE_ENV=production nodemon ./bin/www"
-  },
-  "engines": {
-    "node": "v16.x"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
