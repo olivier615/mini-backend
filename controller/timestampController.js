@@ -1,5 +1,5 @@
 const appError = require('../service/appError.js')
-const Timestamp = require('../models/timestampModal.js')
+const Timestamp = require('../models/timestampModel.js')
 const handelSuccess = require('../service/handelResponse.js')
 
 exports.getTimestamp = async (req, res ,next) => {
@@ -17,6 +17,7 @@ exports.addTimestamp = async (req, res ,next) => {
   })
   handelSuccess(res, newTimestamp)
 }
+
 
 exports.deleteTimestamp = async (req, res ,next) => {
   const { id } = req.params

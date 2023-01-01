@@ -16,9 +16,6 @@ exports.addJackpot = async (req, res, next) => {
   if (donate === undefined) {
     return next(appError(400, 'sponsor 有誤', next))
   }
-  // if (manual === undefined || manual < 0) {
-  //   return next(appError(400, 'manual 有誤', next))
-  // }
   const data = await Counting.create({
     ticket,
     donate,
