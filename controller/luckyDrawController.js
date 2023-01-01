@@ -41,7 +41,8 @@ exports.updateDraw = async (req, res ,next) => {
   }
   const newData =  await LuckyDraw.findByIdAndUpdate(id, {
     content,
-    winner
+    winner,
+    order
   }, { new: true })
   handelSuccess(res, newData)
 }
