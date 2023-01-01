@@ -9,6 +9,10 @@ const luckyDrawSchema = new mongoose.Schema(
       type: String,
       default: ''
     },
+    order: {
+      type: Number,
+      required: [true, '未填寫獎品排序']
+    },
     createdAt: {
       type: Date,
       default: Date.now,

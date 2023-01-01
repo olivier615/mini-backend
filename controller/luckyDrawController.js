@@ -8,11 +8,15 @@ exports.getDrawList = async (req, res ,next) => {
 }
 
 exports.addNewDraw = async (req, res ,next) => {
-  const { content } = req.body
+  const { content, order } = req.body
   if (content === undefined || content === '' || content.trim() === '') {
     return next(appError(400, '未填寫獎品描述', next))
   }
-  const newDraw = await LuckyDraw.create({ content })
+  const checkOrder = await LuckyDraw.find({ order })
+  if (order === undefined || checkOrder.length !== 0) {
+    return next(appError(400, '獎品排序重複或未填寫', next))
+  }
+  const newDraw = await LuckyDraw.create({ content, order })
   handelSuccess(res, newDraw)
 }
 
@@ -24,12 +28,16 @@ exports.deleteDraw = async (req, res ,next) => {
 
 exports.updateDraw = async (req, res ,next) => {
   const { id } = req.params
-  const { content, winner } = req.body
+  const { content, winner, order } = req.body
   if (content === undefined || winner === undefined) {
     return next(appError(400, '獎品序號、內容或得獎者有誤', next))
   }
   if (content === '' || content.trim() === '') {
     return next(appError(400, '未填寫獎品描述', next))
+  }
+  const checkOrder = await LuckyDraw.find({ order })
+  if (order === undefined || checkOrder.length !== 0) {
+    return next(appError(400, '獎品排序重複或未填寫', next))
   }
   const newData =  await LuckyDraw.findByIdAndUpdate(id, {
     content,
