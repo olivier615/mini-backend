@@ -1,10 +1,6 @@
 const mongoose = require('mongoose')
 const luckyDrawSchema = new mongoose.Schema(
   {
-    order: {
-      type: Number,
-      required: [true, '獎品序未填或錯誤']
-    },
     content: {
       type: String,
       required: [true, '未填寫獎品描述']
