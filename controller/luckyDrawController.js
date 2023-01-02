@@ -35,10 +35,6 @@ exports.updateDraw = async (req, res ,next) => {
   if (content === '' || content.trim() === '') {
     return next(appError(400, '未填寫獎品描述', next))
   }
-  const checkOrder = await LuckyDraw.find({ order })
-  if (order === undefined || checkOrder.length !== 0) {
-    return next(appError(400, '獎品排序重複或未填寫', next))
-  }
   const newData =  await LuckyDraw.findByIdAndUpdate(id, {
     content,
     winner,
