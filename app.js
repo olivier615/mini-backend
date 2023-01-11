@@ -17,6 +17,7 @@ var userRouter = require('./routes/user');
 var timestampRouter = require('./routes/timestamp');
 var countingRouter = require('./routes/counting');
 var luckyDrawRouter = require('./routes/luckyDraw');
+var songRouter = require('./routes/song');
 
 const appError = require('./service/appError.js')
 
@@ -47,6 +48,7 @@ app.use('/user', userRouter);
 app.use('/timestamp', timestampRouter);
 app.use('/counting', countingRouter);
 app.use('/luckyDraw', luckyDrawRouter);
+app.use('/song', songRouter);
 
 app.use(function(req,res,next){
   res.status(404).send({
